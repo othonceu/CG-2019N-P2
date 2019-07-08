@@ -66,13 +66,12 @@ void display(void)
 	glPushMatrix();
 		glTranslated(4,0,0);
 		glRotated(RotaZ, 0.f, 1, 0.f);
-		glutSolidCube(5);
+		glutSolidCube(4);
 	glPopMatrix();
 
 	glPushMatrix();
-		//glTranslated(-4,0,0);
-		glTranslated(light_1_position[0], 0, 0);
-		glutSolidSphere (2.0, 20, 16);
+		glTranslated(light_1_position[0],light_1_position[1] , light_1_position[2]);
+		glutSolidSphere (1.0, 20, 16);
 	glPopMatrix();
 
 	
