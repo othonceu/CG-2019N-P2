@@ -19,18 +19,18 @@ const unsigned int FRAMES_PER_SECOND = 30;
 const unsigned int UPDATE_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 
 
-GLfloat mat_specular[] = { 1, 1, 1, 1 };
-GLfloat mat_shininess[] = { 10 };
+GLfloat mat_specular[] = { 1, 0, 1, 1 };
+GLfloat mat_shininess[] = { 100};
 
-GLfloat light_0_position[] = { 1, 1, 1, 0};
+GLfloat light_0_position[] = { 0, 1, 0, 0};
 GLfloat light_0_difuse[]   = { 1, 0, 0 };  //RED
 GLfloat light_0_specular[] = { 1, 0, 1 };  //WHITE
 GLfloat light_0_ambient[]  = { 0.2, 0.2, 0.2 };
 
-GLfloat light_1_position[] = { 1, 1, 1, 0 };
+GLfloat light_1_position[] = { -4, 0, 0, 0 };
 GLfloat light_1_difuse[]   = { 1, 0, 0 };  //GREEN
 GLfloat light_1_specular[] = { 1, 1, 1 };  //WHITE
-GLfloat light_1_ambient[]  = { 0.2, 0.2, 0.2 };
+GLfloat light_1_ambient[]  = { 1.2, 0.2, 1.2 };
 
 void init(void)
 {
@@ -70,37 +70,12 @@ void display(void)
 	glPopMatrix();
 
 	glPushMatrix();
-		glTranslated(-4,0,0);
+		//glTranslated(-4,0,0);
+		glTranslated(light_1_position[0], 0, 0);
 		glutSolidSphere (2.0, 20, 16);
 	glPopMatrix();
 
-	//muda a posicao da fonte luminosa
-	//light_0_position[0] = cos(angLight)*9; //x
-	//light_0_position[1] = sin(angLight)*9; //y
-	//light_0_position[2] = 0; //z
-	//light_0_position[3] = 0; //w
-	//angLight += 0.004;
-
-	//light_1_position[0] = cos(angLight/2.2)*9; //x
-	//light_1_position[1] = sin(angLight/2.2)*9; //y
-	//light_1_position[2] = 0; //z
-	//light_1_position[3] = 0; //w
-
-	glPushMatrix();
-		//posiciona a fonte luminosa
-		glTranslated(100,0,1000);
-		glLightfv(GL_LIGHT0, GL_POSITION, light_0_position);
-		glLightfv(GL_LIGHT1, GL_POSITION, light_1_position);
-	glPopMatrix();
-
-	// desenha a fonte
-	//glTranslated(light_0_position[0], light_0_position[1], light_0_position[2]);
-	//glutSolidSphere(1.0, 20, 16);
-
-	//glLoadIdentity();
-	//glTranslated(light_1_position[0], light_1_position[1], light_1_position[2]);
-	//glutSolidSphere(1.0, 20, 16);
-
+	
 	glutSwapBuffers();
 }
 
@@ -141,8 +116,7 @@ void internalUpdate(int value)
 
 	// Save the time update() was called
 	gTimeLastUpdateMs = timeNowMs;
-//	std::cout << "timeNOw = " << timeNowMs << ", deltaSeconds = " << deltaSeconds << std::endl;
-//	std::cout << rY << std::endl;
+
 	// Invoke our update() function
 	update(deltaSeconds);
 
