@@ -19,17 +19,17 @@ const unsigned int FRAMES_PER_SECOND = 30;
 const unsigned int UPDATE_INTERVAL_MS = 1000 / FRAMES_PER_SECOND;
 
 
-GLfloat mat_specular[] = { 1, 0, 1, 1 };
+GLfloat mat_specular[] = { 1, 0, 0, 1 };
 GLfloat mat_shininess[] = { 100};
 
-GLfloat light_0_position[] = { 0, 1, 0, 0};
-GLfloat light_0_difuse[]   = { 1, 0, 0 };  //RED
-GLfloat light_0_specular[] = { 1, 0, 1 };  //WHITE
+GLfloat light_0_position[] = { -4, 0, 0, 0};
+GLfloat light_0_difuse[]   = { 1, 0, 0 }; 
+GLfloat light_0_specular[] = { 1, 1, 1 };  
 GLfloat light_0_ambient[]  = { 0.2, 0.2, 0.2 };
 
-GLfloat light_1_position[] = { -4, 0, 0, 0 };
-GLfloat light_1_difuse[]   = { 1, 0, 0 };  //GREEN
-GLfloat light_1_specular[] = { 1, 1, 1 };  //WHITE
+GLfloat light_1_position[] = { -3, 0, 0, 1};
+GLfloat light_1_difuse[]   = { 1, 0, 0 };  
+GLfloat light_1_specular[] = { 1, 1, 1 };  
 GLfloat light_1_ambient[]  = { 1.2, 0.2, 1.2 };
 
 void init(void)
@@ -64,13 +64,14 @@ void display(void)
 	glLoadIdentity();
 
 	glPushMatrix();
-		glTranslated(4,0,0);
+		
 		glRotated(RotaZ, 0.f, 1, 0.f);
 		glutSolidCube(4);
 	glPopMatrix();
 
 	glPushMatrix();
-		glTranslated(light_1_position[0],light_1_position[1] , light_1_position[2]);
+		glTranslated(light_1_position[0],light_1_position[1] , light_0_position[1]);
+		glTranslated(-5,0,0);
 		glutSolidSphere (1.0, 20, 16);
 	glPopMatrix();
 
