@@ -1,4 +1,6 @@
+
 # CG-2019N-P2
+```bash
 Prova NP2
 Nome: Othon Paiva Arêas Costa/
 Matricula : 1311100048
@@ -11,3 +13,4 @@ install-deps:
   
 Comando no terminal:
 make && ./main
+```
