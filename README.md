@@ -3,7 +3,7 @@
 ```bash
 Prova NP2
 Nome: Othon Paiva Arêas Costa/
-Matricula : 1311100048
+
 
 Esse prova NP2 foi desenvolvido pelo Linux:
 
